@@ -1,0 +1,39 @@
+<div class="weather-card container py-4 my-4">
+    <div class="search-bar m-5 text-center">
+        <form action="">
+            <label class="w-25" for="search-bar">Search By City</label>
+            <input id="search-bar" class="w-50 search-input" type="search">
+            <button class="btn w-25">Search</button>
+        </form>
+    </div>
+    <div class="row fw-bold text-center mb-2 fade-in">
+        <div class="col">Icon</div>
+        <div class="col">Note</div>
+        <div class="col">Day</div>
+        <div class="col">Temp</div>
+        <div class="col">Wind</div>
+    </div>
+
+    @for (item of weatherStatus; track item?.id) {
+    <div class="row text-center weather-row fade-in">
+        <div class="col ">
+            <img class="w-25 text-center" src="//cdn.weatherapi.com/weather/64x64/day/116.png" alt="">
+        </div>
+        <div class="col">{{item.note}}</div>
+        <div class="col">
+            <span class="text-start">
+                {{item.current.last_updated}}
+            </span>
+        </div>
+        <div class="col">
+            <span class="text-center">{{item.current.temp_c}} c</span> /
+            <span class="text-center">{{item.current.temp_f}} f</span>
+        </div>
+        <div class="col wind">
+            <span class="text-center">
+                {{item.current.wind_mph}}
+            </span>
+        </div>
+    </div>
+    }
+</div>

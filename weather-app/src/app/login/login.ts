@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user-service';
+import { User } from '../models/userModel';
 
 
 @Component({
@@ -17,18 +18,20 @@ export class Login {
 
   constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {
     this.userForm = this.fb.group({
-      userEmail: ['', Validators.required],
-      userPassword: ['']
+      email: ['', Validators.required],
+      pass: ['', Validators.required]
     })
   }
 
 
 
   login() {
-    console.log(this.userForm.valid);
+    const user: User = this.userForm.value
+    console.log(user);
+
 
     if (this.userForm.valid) {
-      this.userService.login(this.userForm.value).subscribe
+      this.userService.login(user)
     }
   }
 

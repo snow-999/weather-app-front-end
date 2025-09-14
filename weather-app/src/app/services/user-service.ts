@@ -8,8 +8,12 @@ import { User } from '../models/userModel';
 export class UserService {
   constructor(private http: HttpClient) { }
 
-  login(user: any) {
-    return this.http.post('http://localhost:8080/api/v1/login', user)
+  login(user: User) {
+    this.http.post('http://localhost:8080/api/v1/login', user).subscribe({
+      next(value) {
+        console.log(value)
+      }
+    })
   }
 
   createUser(user: User) {

@@ -1,0 +1,82 @@
+.weather-card {
+    background: #f8fbff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.search-input {
+
+    border: 2px solid #88888867;
+    border-radius: 15px;
+}
+
+/* Icons */
+
+.w-10 {
+    width: 10px;
+}
+
+.wind {
+    display: inline-block;
+    animation: wave 2s ease-in-out infinite;
+}
+
+/* Fade-in effect for rows */
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.5s;
+}
+
+/* Keyframes */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 2px #888;
+        opacity: 0.7;
+    }
+
+    to {
+        text-shadow: 0 0 10px #ffd700;
+        opacity: 1;
+    }
+}
+
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
