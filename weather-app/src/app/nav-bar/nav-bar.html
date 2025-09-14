@@ -1,18 +1,14 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a routerLink="home" class="navbar-brand">Weather App</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button (click)="showMiniNav()" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="mx-0 collapse navbar-collapse flex-row-reverse" id="navbarNavAltMarkup">
-
-            <div class="navbar-nav">
-                <a routerLink="home" class="nav-link active" aria-current="page">Home</a>
-                <a routerLink="login" class="nav-link">login</a>
-                <a routerLink="signup" class="nav-link">signup</a>
-                <a routerLink="profile" class="nav-link">profile</a>
-            </div>
+        <div [ngClass]="{'d-flex flex-column mx-0 collapse navbar-collapse' :  showMiniMenu,
+          'mx-0 collapse navbar-collapse' :!showMiniMenu,}" class="mx-0 collapse navbar-collapse flex-row-reverse"
+            id="navbarNavAltMarkup">
+            <app-navbar-list [navList]="navBarList" />
         </div>
     </div>
 </nav>

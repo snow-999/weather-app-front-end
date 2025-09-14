@@ -1,0 +1,12 @@
+<ul class="navbar-nav ms-auto align-items-center">
+    @for (item of navList; track $index) {
+    @if (item.show) {
+    <li class="nav-item">
+        <a [routerLink]="item.routerLink" routerLinkActive="active" ariaCurrentWhenActive="page"
+            [routerLinkActiveOptions]="{ exact: true }" class={{item.class}}>{{item.title}}</a>
+    </li>
+    }
+    }
+    @if (logOutButtom) {}
+    <button class="btn ">log out</button>
+</ul>

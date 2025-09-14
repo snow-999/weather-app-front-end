@@ -11,12 +11,13 @@ import { User } from '../models/userModel';
 export class Profile {
   constructor(private userService: UserService) { }
 
-  email = "test4@gmail.com"
-
   user: User | undefined
   ngOnInit() {
     this.getMyUser()
   }
+
+
+
 
   getMyUser() {
     this.userService.getUser().subscribe(data => {
