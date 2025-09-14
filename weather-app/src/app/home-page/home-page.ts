@@ -34,4 +34,13 @@ export class HomePage {
     })
   }
 
+  getWeatherStatusByCityName() {
+    this.weatherStatusService.getWeatherByCity(this.searchBar.value).subscribe({
+      next(value) {
+        console.log(value);
+
+      },
+    })
+  }
+
 }

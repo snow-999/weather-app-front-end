@@ -11,4 +11,9 @@ export class WeatherStatusService {
   getWeatherStatus() {
     return this.http.get("http://localhost:8081/api/v1/getweather")
   }
+
+  getWeatherByCity(cityName: string) {
+    return this.http.post("http://localhost:8081/api/v1/set-weather/{cityName}", cityName)
+  }
+
 }

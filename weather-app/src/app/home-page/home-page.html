@@ -3,7 +3,7 @@
         <form [formGroup]="searchBar">
             <label class="w-25" for="search-bar">Search By City</label>
             <input formControlName="search" id="search-bar" class="w-50 search-input" type="search">
-            <button class="btn w-25">Search</button>
+            <button (click)="getWeatherStatusByCityName()" class="btn w-25">Search</button>
         </form>
     </div>
     <div class="row fw-bold text-center mb-2 fade-in">
