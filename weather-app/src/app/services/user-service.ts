@@ -9,7 +9,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login(user: User) {
-    this.http.post('http://localhost:8080/api/v1/login', user).subscribe({
+    this.http.post('http://localhost:8080/api/v1/login', user, { withCredentials: true }).subscribe({
       next(value) {
         console.log(value)
       }
@@ -22,6 +22,11 @@ export class UserService {
         console.log(value);
       },
     })
+  }
+
+  getUser() {
+    const email = "test4@gmail.com"
+    return this.http.get<User>(`http://localhost:8080/api/v1/get-email/${email}`, { withCredentials: true })
   }
 
 }

@@ -1,8 +1,8 @@
 <div class="weather-card container py-4 my-4">
     <div class="search-bar m-5 text-center">
-        <form action="">
+        <form [formGroup]="searchBar">
             <label class="w-25" for="search-bar">Search By City</label>
-            <input id="search-bar" class="w-50 search-input" type="search">
+            <input formControlName="search" id="search-bar" class="w-50 search-input" type="search">
             <button class="btn w-25">Search</button>
         </form>
     </div>

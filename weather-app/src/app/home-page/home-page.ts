@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { WeatherStatusService } from '../services/weather-status-service';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
-  imports: [],
+  imports: [FormsModule, CommonModule, ReactiveFormsModule],
   templateUrl: './home-page.html',
   styleUrl: './home-page.css'
 })
@@ -11,7 +13,13 @@ export class HomePage {
 
   weatherStatus: any = [];
 
-  constructor(private weatherStatusService: WeatherStatusService) { }
+  searchBar: FormGroup
+
+  constructor(private weatherStatusService: WeatherStatusService, private fb: FormBuilder) {
+    this.searchBar = this.fb.group({
+      search: ['']
+    })
+  }
 
 
   ngOnInit() {

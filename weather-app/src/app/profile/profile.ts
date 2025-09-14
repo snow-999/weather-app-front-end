@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserService } from '../services/user-service';
+import { User } from '../models/userModel';
 
 @Component({
   selector: 'app-profile',
@@ -7,5 +9,18 @@ import { Component } from '@angular/core';
   styleUrl: './profile.css'
 })
 export class Profile {
+  constructor(private userService: UserService) { }
 
+  email = "test4@gmail.com"
+
+  user: User | undefined
+  ngOnInit() {
+    this.getMyUser()
+  }
+
+  getMyUser() {
+    this.userService.getUser().subscribe(data => {
+      this.user = data
+    })
+  }
 }
