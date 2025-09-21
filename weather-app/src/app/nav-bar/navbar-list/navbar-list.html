@@ -1,12 +1,13 @@
 <ul class="navbar-nav ms-auto align-items-center">
-    @for (item of navList; track $index) {
-    @if (item.show) {
+    @for (item of navItems; track $index) {
+    @if (item.show && item.title != "Logout") {
     <li class="nav-item">
         <a [routerLink]="item.routerLink" routerLinkActive="active" ariaCurrentWhenActive="page"
             [routerLinkActiveOptions]="{ exact: true }" class={{item.class}}>{{item.title}}</a>
     </li>
     }
+    @if (item.title == "Logout" && item.show) {
+    <button (click)="logOut()" class="btn ">{{item.title}}</button>
     }
-    @if (logOutButtom) {}
-    <button class="btn ">log out</button>
+    }
 </ul>

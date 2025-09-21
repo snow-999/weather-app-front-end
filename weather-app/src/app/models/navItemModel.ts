@@ -2,5 +2,6 @@ export interface NavItem {
     title: string,
     routerLink: string,
     class: string,
-    show: boolean
+    show: boolean,
+    func?: Function
 }

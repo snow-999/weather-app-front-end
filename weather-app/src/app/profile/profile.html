@@ -2,7 +2,14 @@
     <div class="header">
         <h2>User Details</h2>
     </div>
-    <div class="user-name-input">{{user?.name}}</div>
-    <div class="user-email-input">{{user?.email}}</div>
-    <div class="user-phone-number-input">{{user?.phoneNumber}}</div>
+    <div>
+        <div class="user-name-input">User Name: {{user?.name}}</div>
+        <div class="user-email-input">Email: {{user?.email}}</div>
+        <div class="user-phone-number-input">phoneNumber: {{user?.phoneNumber}}</div>
+        <button (click)="toggelEditForm()" class="btn text-bold p-2 my-2 btn-primary">edit info</button>
+    </div>
+    @if (showEditForm) {
+    <app-edite-form (isUpdated)="isUserUpdated()" [user]="user" />
+    }
+
 </div>

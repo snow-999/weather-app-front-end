@@ -1,7 +1,7 @@
-import { inject, Injectable } from '@angular/core';
-import { Router } from 'express';
-import { CookieService } from 'ngx-cookie-service';
+import { Injectable } from '@angular/core';
+
 import { NavItem } from '../models/navItemModel';
+import { navItems } from '../navBarItems';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +9,12 @@ import { NavItem } from '../models/navItemModel';
 export class NavService {
 
 
-  constructor(private cookieService: CookieService, private router: Router) { }
-
-
-
-  ifLogedIn() {
-    const token = this.cookieService.get('JWT_TOKEN');
-    if (token) {
-
+  navBarItems = navItems
+  toggleFunc(title: string) {
+    const item = this.navBarItems.find(nav => nav.title === title);
+    if (item) {
+      item.show = !item.show;
     }
-  }
-
-  setShowFalse(navItem: NavItem) {
-    navItem.show = false
   }
 
 

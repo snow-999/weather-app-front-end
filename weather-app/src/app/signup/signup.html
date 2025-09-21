@@ -14,24 +14,36 @@
                                     <input formControlName="email" type="email" id="typeEmailX"
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="typeEmailX">Email</label>
+                                    @if (userForm.get('email')?.touched && userForm.get('email')?.invalid) {
+                                    <div>email is required</div>
+                                    }
                                 </div>
 
                                 <div data-mdb-input-init class="form-outline form-white mb-4">
                                     <input formControlName="pass" type="password" id="typePasswordX"
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="typePasswordX">Password</label>
+                                    @if (userForm.get('pass')?.touched && userForm.get('pass')?.invalid) {
+                                    <div>Please Enter A Valid Password</div>
+                                    }
                                 </div>
 
                                 <div data-mdb-input-init class="form-outline form-white mb-4">
                                     <input formControlName="name" type="text" id="userName"
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="userName">User Name</label>
+                                    @if (userForm.get('name')?.touched && userForm.get('name')?.invalid) {
+                                    <div>User Name Is Required</div>
+                                    }
                                 </div>
 
                                 <div data-mdb-input-init class="form-outline form-white mb-4">
                                     <input formControlName="phoneNumber" type="text" id="telphone"
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="telphone">Phone Number</label>
+                                    @if (userForm.get('phoneNumber')?.touched && userForm.get('phoneNumber')?.invalid) {
+                                    <div>Phonenumber Is Required</div>
+                                    }
                                 </div>
 
                                 <button data-mdb-button-init data-mdb-ripple-init

@@ -15,12 +15,19 @@
                                     <input formControlName="email" type="text" id="typeEmailX"
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="typeEmailX">Email</label>
+                                    @if (userForm.get('email')?.touched && userForm.get('email')?.invalid) {
+                                    <div>email is required</div>
+                                    }
                                 </div>
 
                                 <div data-mdb-input-init class="form-outline form-white mb-4">
                                     <input formControlName="pass" type="password" id="typePasswordX"
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="typePasswordX">Password</label>
+                                    @if (userForm.get('pass')?.touched && userForm.get('pass')?.invalid) {
+                                    <div>wrong password</div>
+                                    }
+                                    <!-- <div class="error" *ngIf="userForm?.get('password')?.touched && userForm?.get('password')?.invalid"> wrong password</div> -->
                                 </div>
 
                                 <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a>

@@ -1,0 +1,16 @@
+.form-control:focus {
+    border-color: #fff;
+    box-shadow: 0 0 0 .25rem rgba(255, 255, 255, 0.5);
+}
+
+.form-control {
+    border-radius: 23px;
+}
+
+.gradient-custom {
+    background-color: #fff;
+}
+
+.form-label {
+    font-weight: bold;
+}

@@ -48,4 +48,8 @@ export class UserService {
     return this.http.get<User>(`http://localhost:8080/api/v1/get-email/${email}`, { withCredentials: true })
   }
 
+  updateUserData(userId: Number, user: User) {
+    return this.http.put<User>(`http://localhost:8080/api/v1/update-user/${userId}`, user, { withCredentials: true })
+  }
+
 }

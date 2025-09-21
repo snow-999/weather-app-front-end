@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../services/user-service';
 import { User } from '../models/userModel';
-import { log } from 'console';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
+import 'sweetalert2/src/sweetalert2.scss'
 
 @Component({
   selector: 'app-signup',
@@ -15,21 +17,30 @@ export class Signup {
 
   userForm: FormGroup
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.userForm = this.fb.group({
-      email: ['', Validators.required],
-      pass: ['', Validators.required, Validators.min(8), Validators.max(16)],
-      phoneNumber: ['', Validators.required],
-      name: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      pass: ['', [Validators.required, Validators.min(8), Validators.max(16)]],
+      phoneNumber: ['', [Validators.required, Validators.pattern("^(010|011|012|015)[0-9]{8}$")]],
+      name: ['', [Validators.required]]
     })
   }
 
 
   createUser() {
-    const user: User = this.userForm.value
-    console.log(user);
-    this.userService.createUser(user)
-    console.log("user Created");
-  }
+    if (this.userForm.valid) {
+      const user: User = this.userForm.value
+      this.userService.createUser(user)
+      this.router.navigate([""])
+    } else {
 
+      Swal.fire({
+        title: 'Error!',
+        text: 'Invalid Email and Password',
+        icon: 'error',
+        confirmButtonText: 'click'
+      })
+    }
+
+  }
 }

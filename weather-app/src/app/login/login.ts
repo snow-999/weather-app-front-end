@@ -4,6 +4,9 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router } from '@angular/router';
 import { UserService } from '../services/user-service';
 import { User } from '../models/userModel';
+import Swal from 'sweetalert2'
+import 'sweetalert2/src/sweetalert2.scss'
+import { NavService } from '../services/nav-service';
 
 
 @Component({
@@ -16,22 +19,37 @@ export class Login {
 
   userForm: FormGroup
 
-  constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {
+  constructor(private router: Router, private fb: FormBuilder, private userService: UserService, private navService: NavService) {
     this.userForm = this.fb.group({
-      email: ['', Validators.required],
-      pass: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      pass: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(8)]]
     })
   }
 
 
 
   login() {
-    const user: User = this.userForm.value
-    console.log(user);
-
-
     if (this.userForm.valid) {
+      const user: User = this.userForm.value
       this.userService.login(user)
+      this.router.navigate(["home"])
+      this.navService.toggleFunc("Login")
+      this.navService.toggleFunc("Signup")
+      this.navService.toggleFunc("Logout")
+      this.navService.toggleFunc("Profile")
+      Swal.fire({
+        title: "succes",
+        text: "log in seccesfully",
+        icon: "success",
+        confirmButtonText: "ok"
+      })
+    } else {
+      Swal.fire({
+        title: 'Error!',
+        text: 'Invalid Email and Password',
+        icon: 'error',
+        confirmButtonText: 'click'
+      })
     }
   }
 

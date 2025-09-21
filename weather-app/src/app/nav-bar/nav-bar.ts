@@ -1,10 +1,7 @@
 import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { NavbarList } from "./navbar-list/navbar-list";
-import { NavItem } from '../models/navItemModel';
-import { CookieService } from 'ngx-cookie-service';
-import { Router } from 'express';
 
 
 
@@ -18,56 +15,12 @@ import { Router } from 'express';
 })
 export class NavBar {
 
-  constructor(private cookieService: CookieService) { }
 
   showMiniMenu = false
 
-  navBarList: NavItem[] = [
-    {
-      title: "Home",
-      routerLink: "home",
-      class: "nav-link",
-      show: true
-    },
-    {
-      title: "Profile",
-      routerLink: "profile",
-      class: "nav-link",
-      show: true
-    },
-    {
-      title: "Login",
-      routerLink: "",
-      class: "nav-link",
-      show: true
-    },
-    {
-      title: "Signup",
-      routerLink: "signup",
-      class: "nav-link",
-      show: true
-    }
-  ]
+  // ask ayat about this part (could i make it static but i prefer dynamic)
 
-  ngOnInit() {
-    this.ifLogedIn()
-  }
 
-  ifLogedIn() {
-    const token = this.cookieService.get('JWT_TOKEN');
-    if (token) {
-      this.setShowFalse("Login")
-      this.setShowFalse("Profile")
-      this.setShowFalse("Signup")
-    }
-  }
-
-  setShowFalse(title: string) {
-    const item = this.navBarList.find(nav => nav.title === title);
-    if (item) {
-      item.show = false;
-    }
-  }
 
   showMiniNav() {
     if (this.showMiniMenu) {

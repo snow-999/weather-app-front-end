@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { NavItem } from '../../models/navItemModel';
+import { Component } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+
 import { CookieService } from 'ngx-cookie-service';
+import { navItems } from '../../navBarItems';
+import { NavService } from '../../services/nav-service';
 
 
 @Component({
@@ -11,10 +13,19 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrl: './navbar-list.css'
 })
 export class NavbarList {
-  @Input() navList: NavItem[] = [];
+  navItems = navItems
   logOutButtom: boolean = false
 
+  constructor(private cookieService: CookieService, private navService: NavService, private router: Router) { }
   showLogOut() {
     this.logOutButtom = !this.logOutButtom
+  }
+
+  logOut() {
+    this.cookieService.delete("JWT_TOKEN")
+    this.navService.toggleFunc("Profile")
+    this.navService.toggleFunc("Signup")
+    this.navService.toggleFunc("Login")
+    this.router.navigate([""])
   }
 }

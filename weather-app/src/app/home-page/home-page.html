@@ -17,7 +17,7 @@
     @for (item of weatherStatus; track item?.id) {
     <div class="row text-center weather-row fade-in">
         <div class="col ">
-            <img class="w-25 text-center" src={{item.current.condition.icon}} alt="">
+            <img class="w-25 text-center" src={{item.current.condition.icon}} alt="weather icon">
         </div>
         <div class="col">{{item.note}}</div>
         <div class="col">
