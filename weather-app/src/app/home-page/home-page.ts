@@ -28,7 +28,6 @@ export class HomePage {
 
   getWeatherStatus() {
     this.weatherStatusService.getWeatherStatus().subscribe(data => {
-      console.log(data);
 
       this.weatherStatus = data;
     })

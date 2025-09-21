@@ -1,0 +1,16 @@
+@for (item of users; track item.id) {
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">user number: {{item.id}}</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{item.name}}</h5>
+            <h5 class="card-title">{{item.email}}</h5>
+            <h5 class="card-title">{{item.phoneNumber}}</h5>
+            <div>
+                <button class="btn btn-primary">make admin</button>
+                <button class="btn btn-danger">delete user</button>
+            </div>
+        </div>
+    </div>
+</div>
+}

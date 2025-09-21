@@ -18,7 +18,6 @@ export class NavBar {
 
   showMiniMenu = false
 
-  // ask ayat about this part (could i make it static but i prefer dynamic)
 
 
 

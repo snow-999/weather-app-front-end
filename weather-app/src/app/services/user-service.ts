@@ -52,4 +52,7 @@ export class UserService {
     return this.http.put<User>(`http://localhost:8080/api/v1/update-user/${userId}`, user, { withCredentials: true })
   }
 
+  getAllUsers() {
+    return this.http.get<User[]>(`http://localhost:8080/api/v1/get-all-users`, { withCredentials: true })
+  }
 }
