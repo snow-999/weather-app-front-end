@@ -1,6 +1,7 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateChildFn, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { UserService } from '../services/user-service';
 
 
 
@@ -16,4 +17,8 @@ export const authGuard: CanActivateFn = (route, state) => {
         return false;
     }
 
+};
+export const adminGuard: CanActivateFn = (childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+    const authService = inject(UserService)
+    return authService.hasRole("SUPER_ADMIN")
 };

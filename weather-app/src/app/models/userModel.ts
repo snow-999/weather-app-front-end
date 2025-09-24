@@ -3,5 +3,6 @@ export interface User {
     name: string,
     pass: string,
     phoneNumber: string,
-    id?: Number | undefined
+    id?: number
+    role?: string
 }

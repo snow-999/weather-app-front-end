@@ -31,12 +31,21 @@ export class Login {
   login() {
     if (this.userForm.valid) {
       const user: User = this.userForm.value
-      this.userService.login(user)
-      this.router.navigate(["home"])
+      this.userService.login(user).subscribe({
+        next: () => {
+          if (this.userService.hasRole("SUPER_ADMIN")) {
+            console.log("role accepted");
+            this.navService.toggleFunc("Users")
+          }
+        }
+      })
+
+
       this.navService.toggleFunc("Login")
       this.navService.toggleFunc("Signup")
       this.navService.toggleFunc("Logout")
       this.navService.toggleFunc("Profile")
+      this.router.navigate(["home"])
       Swal.fire({
         title: "succes",
         text: "log in seccesfully",

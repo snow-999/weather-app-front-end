@@ -16,7 +16,7 @@
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="typeEmailX">Email</label>
                                     @if (userForm.get('email')?.touched && userForm.get('email')?.invalid) {
-                                    <div>email is required</div>
+                                    <div class="text-danger">email is required</div>
                                     }
                                 </div>
 
@@ -25,7 +25,7 @@
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="typePasswordX">Password</label>
                                     @if (userForm.get('pass')?.touched && userForm.get('pass')?.invalid) {
-                                    <div>wrong password</div>
+                                    <div class="text-danger">wrong password</div>
                                     }
                                     <!-- <div class="error" *ngIf="userForm?.get('password')?.touched && userForm?.get('password')?.invalid"> wrong password</div> -->
                                 </div>

@@ -16,7 +16,7 @@
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="userName">user name</label>
                                     @if (userForm.get('name')?.touched && userForm.get('name')?.invalid) {
-                                    <div>user name is required</div>
+                                    <div class="text-danger">user name is required</div>
                                     }
                                 </div>
 
@@ -25,7 +25,7 @@
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="phoneNumber">phoneNumber</label>
                                     @if (userForm.get('phoneNumber')?.touched && userForm.get('phoneNumber')?.invalid) {
-                                    <div>wrong password</div>
+                                    <div class="text-danger">wrong password</div>
                                     }
                                 </div>
 

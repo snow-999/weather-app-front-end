@@ -4,7 +4,7 @@ import { Signup } from './signup/signup';
 import { NotFoundPage } from './not-found-page/not-found-page';
 import { HomePage } from './home-page/home-page';
 import { Profile } from './profile/profile';
-import { authGuard } from './gaurd/outhGaurd.gaurd';
+import { adminGuard, authGuard } from './gaurd/outhGaurd.gaurd';
 import { Users } from './users/users';
 
 export const routes: Routes = [
@@ -12,6 +12,6 @@ export const routes: Routes = [
     { path: 'home', component: HomePage },
     { path: 'signup', component: Signup },
     { path: 'profile', component: Profile, canActivate: [authGuard] },
-    { path: 'users', component: Users, canActivate: [authGuard] },
+    { path: 'users', component: Users, canActivate: [authGuard, adminGuard], data: { roles: ['ADMIN'] } },
     { path: '**', component: NotFoundPage }
 ];

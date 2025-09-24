@@ -8,17 +8,41 @@
     </div>
     <div class="row fw-bold text-center mb-2 fade-in">
         <div class="col">Icon</div>
+        <div class="col">City</div>
         <div class="col">Note</div>
         <div class="col">Day</div>
         <div class="col">Temp</div>
         <div class="col">Wind</div>
     </div>
-
+    @if (searchToggel) {
+    <div class="row text-center weather-row fade-in">
+        <div class="col ">
+            <img class="w-25 text-center" src={{searchBarData.current.condition.icon}} alt="weather icon">
+        </div>
+        <div class="col">{{searchBarData.location.name}}</div>
+        <div class="col">{{searchBarData.note}}</div>
+        <div class="col">
+            <span class="text-start">
+                {{searchBarData.current.last_updated}}
+            </span>
+        </div>
+        <div class="col">
+            <span class="text-center">{{searchBarData.current.temp_c}} c</span> /
+            <span class="text-center">{{searchBarData.current.temp_f}} f</span>
+        </div>
+        <div class="col wind">
+            <span class="text-center">
+                {{searchBarData.current.wind_mph}}
+            </span>
+        </div>
+    </div>
+    }@else {
     @for (item of weatherStatus; track item?.id) {
     <div class="row text-center weather-row fade-in">
         <div class="col ">
             <img class="w-25 text-center" src={{item.current.condition.icon}} alt="weather icon">
         </div>
+        <div class="col">{{item.location.name}}</div>
         <div class="col">{{item.note}}</div>
         <div class="col">
             <span class="text-start">
@@ -35,5 +59,6 @@
             </span>
         </div>
     </div>
+    }
     }
 </div>

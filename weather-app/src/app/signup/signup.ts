@@ -20,7 +20,7 @@ export class Signup {
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.userForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      pass: ['', [Validators.required, Validators.min(8), Validators.max(16)]],
+      pass: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
       phoneNumber: ['', [Validators.required, Validators.pattern("^(010|011|012|015)[0-9]{8}$")]],
       name: ['', [Validators.required]]
     })
@@ -30,6 +30,9 @@ export class Signup {
   createUser() {
     if (this.userForm.valid) {
       const user: User = this.userForm.value
+      user.role = "USER"
+      console.log(user);
+
       this.userService.createUser(user)
       this.router.navigate([""])
     } else {

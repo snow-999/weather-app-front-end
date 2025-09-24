@@ -15,7 +15,7 @@
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="typeEmailX">Email</label>
                                     @if (userForm.get('email')?.touched && userForm.get('email')?.invalid) {
-                                    <div>email is required</div>
+                                    <div class="text-danger">email is required</div>
                                     }
                                 </div>
 
@@ -24,7 +24,7 @@
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="typePasswordX">Password</label>
                                     @if (userForm.get('pass')?.touched && userForm.get('pass')?.invalid) {
-                                    <div>Please Enter A Valid Password</div>
+                                    <div class="text-danger">Please Enter A Valid Password</div>
                                     }
                                 </div>
 
@@ -33,7 +33,7 @@
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="userName">User Name</label>
                                     @if (userForm.get('name')?.touched && userForm.get('name')?.invalid) {
-                                    <div>User Name Is Required</div>
+                                    <div class="text-danger">User Name Is Required</div>
                                     }
                                 </div>
 
@@ -42,7 +42,7 @@
                                         class="form-control form-control-lg" />
                                     <label class="form-label" for="telphone">Phone Number</label>
                                     @if (userForm.get('phoneNumber')?.touched && userForm.get('phoneNumber')?.invalid) {
-                                    <div>Phonenumber Is Required</div>
+                                    <div class="text-danger">Phonenumber Is Required</div>
                                     }
                                 </div>
 

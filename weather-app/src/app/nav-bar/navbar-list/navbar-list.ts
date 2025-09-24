@@ -4,6 +4,8 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { navItems } from '../../navBarItems';
 import { NavService } from '../../services/nav-service';
+import { UserService } from '../../services/user-service';
+import { NavItem } from '../../models/navItemModel';
 
 
 @Component({
@@ -13,19 +15,20 @@ import { NavService } from '../../services/nav-service';
   styleUrl: './navbar-list.css'
 })
 export class NavbarList {
-  navItems = navItems
-  logOutButtom: boolean = false
 
-  constructor(private cookieService: CookieService, private navService: NavService, private router: Router) { }
-  showLogOut() {
-    this.logOutButtom = !this.logOutButtom
-  }
+  constructor(private cookieService: CookieService, private navService: NavService, private router: Router, private userServices: UserService) { }
+
+  navItems: NavItem[] = navItems
 
   logOut() {
-    this.cookieService.delete("JWT_TOKEN")
+    if (this.userServices.hasRole("SUPER_ADMIN")) {
+      this.navService.toggleFunc("Users")
+    }
     this.navService.toggleFunc("Profile")
     this.navService.toggleFunc("Signup")
     this.navService.toggleFunc("Login")
+    this.navService.toggleFunc("Logout")
+    this.cookieService.delete("JWT_TOKEN")
     this.router.navigate([""])
   }
 }

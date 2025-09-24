@@ -26,33 +26,10 @@ export const navItems: NavItem[] = [
         show: true
     },
     {
-        title: "Logout",
-        routerLink: "",
-        class: "nav-link",
-        show: false,
-        // func: logOut
-    }
-]
-
-
-export const SuoerAdminNavItems: NavItem[] = [
-    {
-        title: "Home",
-        routerLink: "home",
-        class: "nav-link",
-        show: true
-    },
-    {
-        title: "Profile",
-        routerLink: "profile",
-        class: "nav-link",
-        show: false
-    },
-    {
         title: "Users",
         routerLink: "users",
         class: "nav-link",
-        show: true
+        show: false
     },
     {
         title: "Logout",
